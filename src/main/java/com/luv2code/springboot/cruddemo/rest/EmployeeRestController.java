@@ -61,9 +61,9 @@ public class EmployeeRestController {
 
     // add mapping for PUT /employees - update existing employee
 
-    @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee theEmployee) {
-
+    @PutMapping("/employees/{id}")
+    public Employee updateEmployee(@PathVariable int id , @RequestBody Employee theEmployee) {
+        theEmployee.setId(id);
         Employee dbEmployee = employeeService.save(theEmployee);
 
         return dbEmployee;
